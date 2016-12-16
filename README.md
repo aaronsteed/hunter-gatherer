@@ -1,5 +1,5 @@
 # Hunter-Gatherer
-<img src="https://github.com/aaronsteed/hunter-gatherer/raw/master/resources/static/images/logo.png" alt="alt text" width="20" height="20">
+<img src="https://github.com/aaronsteed/hunter-gatherer/raw/master/resources/static/images/logo.png" alt="alt text" width="100" height="100">
 
 > Hunter-Gatherer is a service which seeks and gathers car data and performs machine learning on its data. 
 
