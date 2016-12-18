@@ -1,20 +1,21 @@
 #!/usr/bin/env python
 
-# Format for URL of website :
-# http://www.website.country/search/result/cars/make/make_of_car/model/model_of_car/page/n/limit/30
 from bs4 import BeautifulSoup
 import requests
+from requests.exceptions import ConnectionError
 import re
 import json
+import time
 
 
 class CarScrape:
-    def __init__(self, make_of_car, model_of_car):
+    def __init__(self, make_of_car, model_of_car, website):
         self.soup = BeautifulSoup
         self.regex = re.compile('.*window.jsonData=(.*);</script>')
         self.make_of_car = make_of_car
         self.model_of_car = model_of_car
         self.urls = []
+        self.website = website
 
     def geturlsforpage(self, html):
         money_regex = re.compile('&euro;(\d*,\d*)')
@@ -30,7 +31,6 @@ class CarScrape:
         for i, car in enumerate(json_data):
             if i > 1:
                 price = money_regex.findall(str(car["price"][0]["eur"]))
-                print price
                 urls.append(car["url"])
             else:
                 pass
@@ -43,16 +43,25 @@ class CarScrape:
 
     def getallurls(self):
         i = 1
-        request = requests.get('http://website/search/result/cars/'
-                               'make/' + self.make_of_car + '/model/' +
-                               self.model_of_car + '/page/' + str(i) +
-                               '/limit/30')
-        json_data = self.geturlsforpage(request.content)
-        print json_data
-        while json_data:
-            i += 1
-            request = requests.get('http://website/search/result/cars/'
-                                   'make/' + self.make_of_car + '/model/' +
+        try:
+            time.sleep(6) # Dont hammer those servers!
+            request = requests.get('http://' + self.website + '/search/result/cars'
+                                   '/make/' + self.make_of_car + '/model/' +
                                    self.model_of_car + '/page/' + str(i) +
                                    '/limit/30')
             json_data = self.geturlsforpage(request.content)
+            while json_data:
+                i += 1
+                request = requests.get('http://' + self.website + '/search/result/'
+                                       'cars/make/' + self.make_of_car + '/model/'
+                                       + self.model_of_car + '/page/' +
+                                       str(i) + '/limit/30')
+                json_data = self.geturlsforpage(request.content)
+        except ConnectionError:
+            # TODO Add logging to application
+            print "Error! Issue could be related to internet connection or " \
+                  "website key is incorrect. Please consult both when " \
+                  "troubleshooting."
+
+    def getcardata(self):
+        # TODO this function
