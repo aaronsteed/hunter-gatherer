@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/aaronsteed/hunter-gatherer.png?label=ready&title=Ready)](https://waffle.io/aaronsteed/hunter-gatherer)
 # Hunter-Gatherer
 <img src="https://github.com/aaronsteed/hunter-gatherer/raw/master/resources/static/images/logo.png" alt="alt text" width="200" height="200" style="display:inline;">
 
