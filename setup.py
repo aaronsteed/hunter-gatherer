@@ -9,7 +9,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='hunter-gatherer',
-    version='2.0.0-Snapshot',
+    version='2.0.0-Snapshot-1',
 
     description='A gathering and machine-learning system for AutoGrab.',
     long_description=long_description,
