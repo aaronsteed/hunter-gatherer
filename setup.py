@@ -31,13 +31,17 @@ setup(
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
     ],
+    data_files=[
+        ('/etc/init.d', ['data/scripts/hunter-gatherer']),
+        ('/usr/share/hunter-gatherer',
+         ['data/conf/hunter-gatherer.conf.example'])
+    ],
     keywords='scraping parsing machine-learning',
     packages=find_packages(exclude=['resources']),
     install_requires=['requests', 'BeautifulSoup4'],
 
     entry_points={
         'console_scripts': [
-
             'hunt=hunter_gatherer.__main__:main',
         ],
     },

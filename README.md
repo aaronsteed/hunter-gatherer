@@ -16,21 +16,23 @@ Requires the following:
 - MongoDB 
 
 ---
-### Installation
+### Installation ###
+ 
+ - Download the source in ether a .zip or tar.gz format. Unzip appropriately.
+ - Navigate to the source file and type the following : 
+    - ```python setup.py install```
+ - Now that the application is installed, there are two ways to run the application, 
+in the foreground, or in the background (daemon)
+ - To run the application as a saemon service, one must chnage the init scrpt to be executable. 
+    - ```sudo chmod +x /etc/init.d/hunter-gatherer```
+ - To run the application in the foreground, simply type ```hunt```
+---
+### Development ###
 
-```sh
-python hunter-gatherer install
-```
+ - Clone the repo ```git clone git@github.com:aaronsteed/hunter-gatherer.git```
+ - Submit pull requests to master branch
 ---
-### Development
-To add to this repository, one must do the following :
-- Clone the repo
-```sh
-git clone git@github.com:aaronsteed/hunter-gatherer.git
-```
-- When submitting a new feature for evaluation, submit as merging to MASTER
----
-### Todos
+### Todos ###
 
  - Machine learning module of project. :chart_with_upwards_trend:
  - Integration with autograb-frontend. :zap:

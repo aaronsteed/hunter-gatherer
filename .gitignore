@@ -88,6 +88,12 @@ ENV/
 # Rope project settings
 .ropeproject
 
+# Hunter-gatherer Settings
 example.json
 .idea/
 key.txt
+
+# Vagrant
+.vagrant/
+Vagrantfile
+
