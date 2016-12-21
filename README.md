@@ -26,11 +26,13 @@ in the foreground, or in the background (daemon)
  - To run the application as a saemon service, one must chnage the init scrpt to be executable. 
     - ```sudo chmod +x /etc/init.d/hunter-gatherer```
  - To run the application in the foreground, simply type ```hunt```
+ 
 ---
 ### Development ###
 
  - Clone the repo ```git clone git@github.com:aaronsteed/hunter-gatherer.git```
  - Submit pull requests to master branch
+ 
 ---
 ### Todos ###
 
