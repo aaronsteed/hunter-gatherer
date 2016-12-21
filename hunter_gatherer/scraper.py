@@ -49,19 +49,18 @@ class CarScrape:
                                    '/make/' + self.make_of_car + '/model/' +
                                    self.model_of_car + '/page/' + str(i) +
                                    '/limit/30')
-            json_data = self.geturlsforpage(request.content)
-            while json_data:
+            has_data = self.geturlsforpage(request.content)
+            while has_data:
                 i += 1
                 request = requests.get('http://' + self.website + '/search/result/'
                                        'cars/make/' + self.make_of_car + '/model/'
                                        + self.model_of_car + '/page/' +
                                        str(i) + '/limit/30')
-                json_data = self.geturlsforpage(request.content)
+                has_data = self.geturlsforpage(request.content)
         except ConnectionError:
             # TODO Add logging to application
             print "Error! Issue could be related to internet connection or " \
                   "website key is incorrect. Please consult both when " \
                   "troubleshooting."
 
-    def getcardata(self):
-        # TODO this function
+    # def getcardata(self): # TODO this function

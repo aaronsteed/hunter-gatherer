@@ -1,0 +1,58 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          hunter-gatherer
+# Required-Start:    $network $named $remote_fs $syslog
+# Required-Stop:     $network $named $remote_fs $syslog
+# Should-Start:      hunter-gatherer
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: backend daemon service for AutoGrab
+# Description:       Backend service for the AutoGrab application. Scrapes and machine learns about car data.
+### END INIT INFO
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/usr/local/bin/hunt
+DAEMON_OPTS="Y2Fyem9uZS5pZQ==\n"
+NAME="hunter-gatherer"
+DESC="Backend service for the AutoGrab application"
+PIDFILE="/var/run/puppet/${NAME}.pid"
+
+reload_hunter_gatherer() {
+        start-stop-daemon --stop --quiet --signal HUP --pidfile $PIDFILE
+}
+
+start_hunter_gatherer() {
+    start-stop-daemon --start --quiet --background --pidfile $PIDFILE \
+        --startas $DAEMON $DAEMON_OPTS
+}
+
+stop_hunter_gatherer() {
+        start-stop-daemon --stop --retry TERM/10/KILL/5 --quiet --oknodo --pidfile $PIDFILE
+}
+
+status_hunter_gatherer() {
+        status_of_proc -p "${PIDFILE}" "${DAEMON}" "${NAME}"
+}
+
+case "$1" in
+    start)
+        start_hunter_gatherer
+        ;;
+    stop)
+        stop_hunter_gatherer
+        ;;
+    reload)
+        reload_hunter_gatherer
+        ;;
+    status)
+        status_hunter_gatherer
+        ;;
+    restart)
+        stop_hunter_gatherer
+        start_hunter_gatherer
+        ;;
+  *)
+        echo "Usage: $0 {start|stop|status|restart|reload}" >&2
+        exit 1
+        ;;
+esac
