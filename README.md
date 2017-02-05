@@ -18,6 +18,7 @@ Requires the following:
 ---
 ### Installation ###
  
+ - Install [Mongo](https://docs.mongodb.com/manual/installation/) and run. 
  - Download the source in ether a .zip or tar.gz format. Unzip appropriately.
  - Navigate to the source file and type the following : 
     - ```python setup.py install```
@@ -48,6 +49,7 @@ in the foreground, or in the background (daemon)
     - ```Scikit-learn``` : Machine-learing algorithms on data.
     - ```Supervisor``` : Daemonization of program and monitoring of proccesses. 
     - ```Pip``` : Dependency management.
+    - ```PyMongo``` : Database driver for MongoDB
 - MongoDB : Storage of data.
 - Travis CI : Continuous Integration
 

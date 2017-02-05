@@ -1,6 +1,6 @@
 #!/bin/sh
 ### BEGIN INIT INFO
-# Provides:          hunter-gatherer
+# Provides:          Back-end
 # Required-Start:    $network $named $remote_fs $syslog
 # Required-Stop:     $network $named $remote_fs $syslog
 # Should-Start:      hunter-gatherer
@@ -11,9 +11,9 @@
 ### END INIT INFO
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-DAEMON=/usr/local/bin/hunt
-DAEMON_OPTS="Y2Fyem9uZS5pZQ==\n"
 NAME="hunter-gatherer"
+DAEMON=/usr/local/bin/$NAME
+DAEMON_OPTS=$2
 DESC="Backend service for the AutoGrab application"
 PIDFILE="/var/run/puppet/${NAME}.pid"
 
