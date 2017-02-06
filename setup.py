@@ -9,7 +9,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='hunter-gatherer',
-    version='2.0.0-Snapshot-4',
+    version='2.0.0-Snapshot-5',
 
     description='A gathering and machine-learning system for AutoGrab.',
     long_description=long_description,
@@ -24,12 +24,12 @@ setup(
     classifiers=[
         'Development Status :: 5 - Production/Stable',
 
-        'Intended Audience :: AutoGrab',
+        'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
 
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.2',
+        'Programming Language :: Python :: 3.6',
     ],
     data_files=[
         ('/etc/init.d', ['data/scripts/hunter-gatherer']),
@@ -38,11 +38,11 @@ setup(
     ],
     keywords='scraping parsing machine-learning',
     packages=find_packages(exclude=['resources']),
-    install_requires=['requests', 'BeautifulSoup4'],
+    install_requires=['requests', 'BeautifulSoup4', 'pymongo'],
 
     entry_points={
         'console_scripts': [
-            'hunt=hunter_gatherer.__main__:main',
+            'hunter-gatherer=hunter_gatherer.__main__:main',
         ],
     },
 )

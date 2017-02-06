@@ -1,1 +1,2 @@
+# Hunter-Gatherer Configuration File (YAML)
 log_file = '/var/log/hunter-gatherer/hunter-gatherer.log'
