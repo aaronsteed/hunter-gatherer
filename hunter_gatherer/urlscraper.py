@@ -2,15 +2,18 @@
 
 from bs4 import BeautifulSoup
 import requests
+from requests.exceptions import Timeout, ConnectionError
 import json
-import time
 from scraper import Scraper
 
 
 class URLScraper(Scraper):
     def __init__(self, make_of_car, model_of_car, url, regex):
         Scraper.__init__(self, make_of_car, model_of_car, url, regex)
-        self.links = []
+        self._links = []
+
+    def __iter__(self):
+        return iter(self._links)
 
     def get_urls_for_page(self, html):
         regex = self._regex
@@ -29,7 +32,7 @@ class URLScraper(Scraper):
             else:
                 pass
 
-        self.links = self.links + urls
+        self._links = self._links + urls
         if len(urls) == 0:
             return False
         else:
@@ -38,7 +41,7 @@ class URLScraper(Scraper):
     def get_all_urls(self):
         i = 1
         try:
-            time.sleep(6)  # Don't want to hammer those servers!
+            # time.sleep(6)  # Don't want to hammer those servers!
             request = requests.get('http://' + self._url +
                                    '/search/result/cars' +
                                    '/make/' + self._make_of_car + '/model/' +
@@ -54,6 +57,7 @@ class URLScraper(Scraper):
                                        self._model_of_car + '/page/' +
                                        str(i) + '/limit/30')
                 has_data = self.get_urls_for_page(request.content)
-        except ConnectionError:
+
+        except (ConnectionError, Timeout):
             # TODO Logging and better error messages
             print("Error")

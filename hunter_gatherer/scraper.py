@@ -13,3 +13,6 @@ class Scraper:
     def get_make_of_car(self):
         return self._make_of_car
 
+    def get_model_of_car(self):
+        return self._model_of_car
+
