@@ -8,6 +8,7 @@ import json
 import re
 import time
 
+
 def convert_list_of_maps_to_map(list_of_maps):
     converted_map = {}
     for map in list_of_maps:
@@ -21,6 +22,9 @@ class DocScraper(Scraper):
     def __init__(self, make_of_car, model_of_car, url, regex):
         Scraper.__init__(self, make_of_car, model_of_car, url, regex)
         self._data = {}
+
+    def __str__(self):
+        return self._data.__str__()
 
     def _format_price(self):
         money_regex = re.compile('&euro;(.*)')
