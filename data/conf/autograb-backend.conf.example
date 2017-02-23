@@ -1,0 +1,2 @@
+# autograb_backend Configuration File (YAML)
+log_file = '/var/log/autograb_backend/autograb_backend.log'

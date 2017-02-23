@@ -8,14 +8,14 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='hunter-gatherer',
-    version='2.0.0-Snapshot-5',
+    name='autograb-backend',
+    version='2.0.0',
 
     description='A gathering and machine-learning system for AutoGrab.',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/aaronsteed/hunter-gatherer',
+    url='https://github.com/aaronsteed/autograb_backend',
 
     # Author details
     author='Aaron Steed',
@@ -32,9 +32,11 @@ setup(
         'Programming Language :: Python :: 3.6',
     ],
     data_files=[
-        ('/etc/init.d', ['data/scripts/hunter-gatherer']),
-        ('/usr/share/hunter-gatherer',
-         ['data/conf/hunter-gatherer.conf.example'])
+        ('/etc/init.d', ['data/scripts/autograb-backend']),
+        ('/usr/share/autograb-backend',
+         ['data/conf/auto-grab-backend.conf.example']),
+        ('/usr/share/autograb-backend',
+         ['requirements.txt'])
     ],
     keywords='scraping parsing machine-learning',
     packages=find_packages(exclude=['resources']),
@@ -42,7 +44,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'hunter-gatherer=hunter_gatherer.__main__:main',
+            'autograb-backend=autograb_backend.__main__:run',
         ],
     },
 )

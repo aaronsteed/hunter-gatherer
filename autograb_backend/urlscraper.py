@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from bs4 import BeautifulSoup
 import requests
 from requests.exceptions import Timeout, ConnectionError
 import json
-from scraper import Scraper
+from .scraper import Scraper
 
 
 class URLScraper(Scraper):

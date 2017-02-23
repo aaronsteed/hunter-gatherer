@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from pymongo import MongoClient
 from datetime import datetime
 import hashlib
@@ -15,14 +15,18 @@ class HunterDB:
                             "_" + doc_scraper.get_model_of_car())]
         document = doc_scraper.get_data()
 
-        sha1_hash = hashlib.sha1()
-        sha1_hash.update(document.__str__().encode('utf-8'))
+        hash = hashlib.sha1()
+        hash.update(document.__str__().encode('utf-8'))
 
-        hexdigest = sha1_hash.hexdigest()
+        sha1 = hash.hexdigest()
         document['created'] = datetime.utcnow()
-        document['_id'] = hexdigest
+        document['_id'] = sha1
 
-        collection.find_one_and_update({'_id': hexdigest},
+        poo = collection.find({'_id': sha1})
+        if poo:
+            print(poo)
+            print(document)
+        collection.find_one_and_update({'_id': sha1},
                                        {'$set': document},
                                        upsert=True)
 

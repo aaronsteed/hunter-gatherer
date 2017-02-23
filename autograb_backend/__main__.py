@@ -1,10 +1,10 @@
 #!/usr/bin/env python
-from database import HunterDB
+from .database import HunterDB
 import time
 import sys
 import re
-from urlscraper import URLScraper
-from docscraper import DocScraper
+from .urlscraper import URLScraper
+from .docscraper import DocScraper
 from base64 import b64decode
 from pymongo.errors import ServerSelectionTimeoutError
 

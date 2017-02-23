@@ -10,46 +10,47 @@
 # Description:       Backend service for the AutoGrab application. Scrapes and machine learns about car data.
 ### END INIT INFO
 
+USER=autograb-backend
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-NAME="hunter-gatherer"
+NAME="autograb-backend"
 DAEMON=/usr/local/bin/$NAME
 DAEMON_OPTS=$2
 DESC="Backend service for the AutoGrab application"
 PIDFILE="/var/run/puppet/${NAME}.pid"
 
-reload_hunter_gatherer() {
+reload_autograb_backend() {
         start-stop-daemon --stop --quiet --signal HUP --pidfile $PIDFILE
 }
 
-start_hunter_gatherer() {
+start_autograb_backend() {
     start-stop-daemon --start --quiet --background --pidfile $PIDFILE \
         --startas $DAEMON $DAEMON_OPTS
 }
 
-stop_hunter_gatherer() {
+stop_autograb_backend() {
         start-stop-daemon --stop --retry TERM/10/KILL/5 --quiet --oknodo --pidfile $PIDFILE
 }
 
-status_hunter_gatherer() {
+status_autograb_backend() {
         status_of_proc -p "${PIDFILE}" "${DAEMON}" "${NAME}"
 }
 
 case "$1" in
     start)
-        start_hunter_gatherer
+        start_autograb_backend
         ;;
     stop)
-        stop_hunter_gatherer
+        stop_autograb_backend
         ;;
     reload)
-        reload_hunter_gatherer
+        reload_autograb_backend
         ;;
     status)
-        status_hunter_gatherer
+        status_autograb_backend
         ;;
     restart)
-        stop_hunter_gatherer
-        start_hunter_gatherer
+        stop_autograb_backend
+        start_autograb_backend
         ;;
   *)
         echo "Usage: $0 {start|stop|status|restart|reload}" >&2

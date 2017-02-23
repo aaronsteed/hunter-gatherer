@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from bs4 import BeautifulSoup
 import requests
 from requests.exceptions import ConnectionError
-from scraper import Scraper
+from .scraper import Scraper
 import json
 import re
 import time

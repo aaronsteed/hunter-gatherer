@@ -76,7 +76,7 @@ target/
 celerybeat-schedule
 
 # dotenv
-.env
+.env*
 
 # virtualenv
 venv/
@@ -96,4 +96,7 @@ key.txt
 # Vagrant
 .vagrant/
 Vagrantfile
+
+#deb files
+*.deb
 
